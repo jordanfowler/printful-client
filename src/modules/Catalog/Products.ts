@@ -26,9 +26,10 @@ class Products extends BaseModule {
     });
   }
 
-  getAll(): Promise<Response> {
-    //Get all Products
-    return this._execute("/products", {
+  getAll(category_ids: string[]): Promise<Response> {
+    //Get all Products with given category_ids
+    const category_id = category_ids.join(",");
+    return this._execute(`/products?category_id=${category_id}`, {
       method: "Get",
     });
   }
